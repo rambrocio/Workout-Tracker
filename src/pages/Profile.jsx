@@ -3,7 +3,7 @@ import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 
-const Dashboard = () => {
+const Profile = () => {
     const { session, signOut } = UserAuth();
     const navigate = useNavigate();
     
@@ -22,7 +22,7 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar />
-            <h1>Dashboard</h1>
+            <h1>Profile Page</h1>
             <h2>Welcome, {session?.user?.email}</h2>
             <div>
                 <p onClick={handleSignOut}>Sign Out</p>
@@ -31,4 +31,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default Profile;

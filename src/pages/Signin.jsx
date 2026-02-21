@@ -13,14 +13,14 @@ const Signin = () => {
     const navigate = useNavigate();
     console.log(session);
 
-    const handleSignUp = async (e) => {
+    const handleSignIn = async (e) => {
         e.preventDefault()
         setLoading(true)
         try {
             const result = await signInUser(email, password)
             
             if (result.success) {
-                navigate('/dashboard')
+                navigate('/input')
             }
         } catch (error) {
             setError("ERROR OCCURED!");
@@ -30,7 +30,7 @@ const Signin = () => {
     }
 
     return (
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={handleSignIn}>
             <h2>Sign In</h2>
             <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
             <div>

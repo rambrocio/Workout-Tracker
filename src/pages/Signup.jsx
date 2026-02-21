@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Signin from "./Signin";
 import { UserAuth } from "../context/AuthContext";
+import { createUserProfile } from "../services/profileServices";
 
 const Signup = () => {
     const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const Signup = () => {
             const result = await signUpNewUser(email, password)
             
             if (result.success) {
-                navigate('/dashboard')
+                navigate('/signup2')
             }
         } catch (error) {
             setError("ERROR OCCURED!");
@@ -32,16 +33,11 @@ const Signup = () => {
     return (
         <form onSubmit={handleSignUp}>
             <h2>Sign Up</h2>
-            <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
             <div>
                 <input onChange={(e) => setEmail(e.target.value)} 
                 type="email" 
                 placeholder="Email" 
                 /> <br />
-                <input 
-                type="text"
-                placeholder="Name"
-                /> <br /> 
                 <input onChange={(e) => setPassword(e.target.value)} 
                 type="password" 
                 placeholder="Password" 
@@ -49,6 +45,7 @@ const Signup = () => {
                 <button type="submit" disabled={loading}>Sign Up</button>
                 {error && <p>{error}</p>}
             </div>
+            <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
         </form>
     )
 }
