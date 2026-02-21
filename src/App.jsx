@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import Signup from './components/Signup'
+import Signup from './pages/Signup'
+import Navbar from './components/navbar'
 
 function App() {
 

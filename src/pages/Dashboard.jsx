@@ -1,6 +1,7 @@
 import React from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/navbar";
 
 const Dashboard = () => {
     const { session, signOut } = UserAuth();
@@ -20,6 +21,7 @@ const Dashboard = () => {
 
     return (
         <div>
+            <Navbar />
             <h1>Dashboard</h1>
             <h2>Welcome, {session?.user?.email}</h2>
             <div>

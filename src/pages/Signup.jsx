@@ -13,7 +13,7 @@ const Signup = () => {
     const navigate = useNavigate();
     console.log(session);
 
-    const handleSignIn = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault()
         setLoading(true)
         try {
@@ -30,7 +30,7 @@ const Signup = () => {
     }
 
     return (
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={handleSignUp}>
             <h2>Sign Up</h2>
             <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
             <div>
@@ -38,6 +38,10 @@ const Signup = () => {
                 type="email" 
                 placeholder="Email" 
                 /> <br />
+                <input 
+                type="text"
+                placeholder="Name"
+                /> <br /> 
                 <input onChange={(e) => setPassword(e.target.value)} 
                 type="password" 
                 placeholder="Password" 
