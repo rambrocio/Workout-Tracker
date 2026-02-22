@@ -7,11 +7,7 @@ import Workouts from "../pages/Workouts";
 export default function Navbar() {
     return (
         <>
-            <ul>
-                <Link to='/profile'>Profile</Link>
-                <Link to='/input'>Input</Link>
-                <Link to='/workouts'>My Workouts</Link>
-            </ul>
+            <p><Link to='/input'>Input</Link> <Link to='/workouts'>My-Workouts</Link> <Link to='/profile'>Profile</Link></p>
         </>
     );
 }

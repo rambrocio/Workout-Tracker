@@ -49,26 +49,26 @@ const Signup2 = () => {
             <h2>Sign Up Continued</h2>
             <div>
                 <input onChange={(e) => setName(e.target.value)} 
-                type="text" 
-                placeholder="Name" 
+                    type="text" 
+                    placeholder="Name" 
                 /> <br />
                 <input onChange={(e) => setWeight(e.target.value)} 
-                type="number" 
-                placeholder="Weight" 
+                    type="number" 
+                    placeholder="Weight" 
                 /> <br />
                 <input onChange={(e) => setMaxBench(e.target.value)} 
-                type="number" 
-                placeholder="Bench" 
+                    type="number" 
+                    placeholder="Bench" 
                 /> <br />
                 <input onChange={(e) => setMaxSquat(e.target.value)} 
-                type="number" 
-                placeholder="Squat" 
+                    type="number" 
+                    placeholder="Squat" 
                 /> <br />
                 <input onChange={(e) => setMaxDeadlift(e.target.value)} 
-                type="number" 
-                placeholder="Deadlift" 
+                    type="number" 
+                    placeholder="Deadlift" 
                 /> <br />
-                <button type="submit" disabled={loading}>Complete Profile</button>
+                <button type="submit" disabled={loading}>Complete P</button>
                 {error && <p>{error}</p>}
             </div>
             <p>Already have an account? <Link to='/signin'>Sign In</Link></p>

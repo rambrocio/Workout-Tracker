@@ -32,5 +32,5 @@ export async function getUserProfile(userId) {
             return null;
         }
     
-    return data;
+        return data;
 }

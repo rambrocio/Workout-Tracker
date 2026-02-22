@@ -2,10 +2,19 @@ import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import Navbar from "../components/navbar";
 import { getUserProfile } from "../services/profileServices";
+import { createWorkout } from "../services/workoutServices";
+import { supabase } from "../supabase";
 
 const Input = () => {
     const { session } = UserAuth();
     const [userData, setUserData] = useState(null);
+    const [exersizeName, setExersizeName] = useState(null);
+    const [sets, setSets] = useState("");
+    const [reps, setReps] = useState("");
+    const [weight, setWeight] = useState("");
+    const [date, setDate] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const loadData = async () => {
@@ -21,33 +30,63 @@ const Input = () => {
         loadData(); 
     }, [session]);
 
+    const handleWorkoutInput = async (e) => {
+        e.preventDefault()
+        setLoading(true)
+        setError("")
+        try{
+            if (!session?.user) {
+                throw new Error("No user found");
+            }
+
+            const result = await createWorkout(
+                session.user.id,
+                exersizeName,
+                sets,
+                reps,
+                weight,
+                date
+            );
+            
+            if (result.success) {
+                console.log("Workout inputted successfully");
+            }
+
+        } catch (error) {
+            setError("ERROR OCCURED!");
+        } finally {
+            setLoading(false);
+        }
+    }
+
     return (
         <>
             <Navbar />
             <div>
                 <h1>Hello  {userData?.name || "Loading..."}, Input Your Workout Below</h1>
-                <form>
-                    <input 
-                        type="text"
+                <form onSubmit={handleWorkoutInput}>
+                    <input onChange={(e) => setDate(e.target.value)}
+                        type="date"
                         placeholder="Date"
                     /> <br />
-                    <input
+                    <input onChange={(e) => setExersizeName(e.target.value)}
                         type="text"
                         placeholder="Muscle Group Hit"
                     /> <br />
-                    <input 
+                    <input onChange={(e) => setSets(e.target.value)}
                         type="number"
                         placeholder="Sets"
                     /> <br />
-                    <input
+                    <input onChange={(e) => setReps(e.target.value)}
                         type="number"
                         placeholder="Reps"
                     /> <br />
-                    <input
+                    <input onChange={(e) => setWeight(e.target.value)}
                         type="number"
                         placeholder="Weight"
                     /> <br/ >
-                    <button>Submit</button> 
+                    <button type="submit" disabled={loading}>Submit</button> 
+                    {error && <p>{error}</p>}
                     <button>Clear</button>
                 </form>
             </div>
