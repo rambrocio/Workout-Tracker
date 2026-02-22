@@ -1,10 +1,11 @@
 import { supabase } from "../supabase";
 
-export async function createWorkout(userId, exersizeName, numSets, numReps, workoutWeight, date) {
+export async function createWorkout(userId, muscleGroup, exersizeName, numSets, numReps, workoutWeight, date) {
     const { data, error } = await supabase
         .from("workouts")
         .insert([{
             user_id: userId,
+            muscle_group: muscleGroup,
             exersize_name: exersizeName,
             sets: numSets,
             reps: numReps,
