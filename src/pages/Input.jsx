@@ -76,6 +76,16 @@ const Input = () => {
                         placeholder="Date"
                         value={date}
                     /> <br />
+
+                    <label>
+                        Select Muscle Group Hit:
+                        <select>
+                            <option>Chest</option>
+                            <option>Back</option>
+                            <option>Legs</option>
+                            <option>Arms</option>
+                        </select>
+                    </label> <br />
                     <input onChange={(e) => setMuscleGroup(e.target.value)}
                         type="text"
                         placeholder="Muscle Group Hit"
