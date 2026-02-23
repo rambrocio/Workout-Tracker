@@ -37,25 +37,24 @@ const Profile = () => {
                 if (!data) {
                     return;
                 }
-                let days = [];
+                
                 let sets = 0;
                 let reps = 0;
                 let weight = 0;
                 let totalWeight = 0;
+                
+                const numDays = [... new Set(data.map(item => item.workout_date))];
 
                 for (let i = 0; i < data.length; i++) {
                     const workout = data[i];
 
-                    days.push(workout.workout_date);
                     sets = sets + workout.sets;
                     reps = reps + workout.reps;
                     weight = workout.weight * workout.reps * workout.sets;
                     totalWeight = totalWeight + weight;
                 }
 
-                const numDays = [... new Set(days.map(index => index.workout_date))];
-
-                setDaysWorkedOut(numDays.length + 1);
+                setDaysWorkedOut(numDays.length);
                 setTotalSets(sets);
                 setTotalReps(reps * sets);
                 setTotalWeight(totalWeight);
