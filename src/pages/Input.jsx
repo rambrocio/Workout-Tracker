@@ -59,7 +59,7 @@ const Input = () => {
             }
 
         } catch (error) {
-            setError("Error Occured");
+            setError("Error occured inputting workout");
         } finally {
             setLoading(false);
         }
