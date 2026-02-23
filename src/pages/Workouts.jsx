@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../components/navbar";
+import { useState, useEffect } from "react";
+import Heading from "../components/heading";
 import { UserAuth } from "../context/AuthContext";
 import { getUserProfile } from "../services/profileServices";
 import { getWorkout } from "../services/workoutServices";
 import { formatDate } from "../services/dateServices";
+import '../styling/Workouts.css'
 
 const Workouts = () => {
     const { session } = UserAuth();
@@ -49,44 +50,47 @@ const Workouts = () => {
 
     return (
         <>
-            <Navbar />
-            <h1>{userData?.name || "Loading..."}'s Workouts Page</h1>
-            <form onSubmit={handleGetWorkout}>
-                <input onChange={(e) => setInputDate(e.target.value)}
-                type="date"
-                /> <br />
-                <button type="submit" disabled={loading}>Submit</button>
-            </form>
-            {searchDate ? (
-                <> 
-                    {workouts.length > 0 ? (
-                        <>
-                            <h2>Your {formatDate(searchDate)} Workout</h2>
-                            <div>
-                                <h3>Body Parts Hit On This Day:</h3>
-                                {bodyPartsHit.map((name, index) => (
-                                    <li key={index}>{name}</li>
-                                ))}
-                            </div>
-                            <h3>Exercises Done:</h3>
-                            {workouts.map((workout) => (
-                                <div key={workout.id}>
-                                    <p>Excersize Name: {workout?.exersize_name}</p>
-                                    <p>Number of Sets: {workout?.sets}</p>
-                                    <p>Number of Reps: {workout?.reps}</p>
-                                    <p>Amount Lifted: {workout?.weight}</p>
+            <Heading />
+            <div className="pageContainer">
+                <h1>Your Workout Page</h1>
+                <form onSubmit={handleGetWorkout}>
+                    <input onChange={(e) => setInputDate(e.target.value)}
+                    type="date"
+                    /> <br />
+                    <button type="submit" disabled={loading}>Submit</button>
+                </form>
+                {searchDate ? (
+                    <> 
+                        {workouts.length > 0 ? (
+                            <>
+                                <h2>Your {formatDate(searchDate)} Workout</h2>
+                                <div>
+                                    <h3>Body Parts Hit On This Day:</h3>
+                                    {bodyPartsHit.map((name, index) => (
+                                        <li key={index}>{name}</li>
+                                    ))}
                                 </div>
-                            ))}
-                        </>
-                    ) : (
-                        <>
-                            <p>YOU DID NOT WORKOUT ON: {formatDate(searchDate)}</p>
-                        </>
-                    )}
-                </>
-            ) : (
-                <p>Please enter date</p>
-            )}
+                                <h3>Exercises Done:</h3>
+                                {workouts.map((workout) => (
+                                    <div key={workout.id}>
+                                        <p>Excersize Name: {workout?.exersize_name}</p>
+                                        <p>Number of Sets: {workout?.sets}</p>
+                                        <p>Number of Reps: {workout?.reps}</p>
+                                        <p>Amount Lifted: {workout?.weight}</p>
+                                    </div>
+                                ))}
+                            </>
+                        ) : (
+                            <>
+                                <p>Sorry {userData?.name}, </p>
+                                <p> YOU DID NOT WORKOUT ON: {formatDate(searchDate)}</p>
+                            </>
+                        )}
+                    </>
+                ) : (
+                    <p>Please enter date</p>
+                )}
+            </div>
         </>
     );
 }

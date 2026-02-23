@@ -1,0 +1,25 @@
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 8px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-color: black;
+    border-width: 2px;
+    border-top-style:  solid;
+    border-bottom-style: solid;
+    padding: 4px;
+    background-color: var(--bg-secondary);
+}
+
+.navbar-items {
+    display: flex;
+    gap: 64px;
+    margin-right: 32px;
+}

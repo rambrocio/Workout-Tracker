@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-import Navbar from "../components/navbar";
+import Heading from "../components/heading";
 import { getUserProfile } from "../services/profileServices";
 import { createWorkout } from "../services/workoutServices";
 
@@ -67,8 +67,8 @@ const Input = () => {
 
     return (
         <>
-            <Navbar />
-            <div>
+            <Heading />
+            <div className="pageContainer">
                 <h1>Hello  {userData?.name || "Loading..."}, Input Your Workout Below</h1>
                 <form onSubmit={handleWorkoutInput}>
                     <input onChange={(e) => setDate(e.target.value)}

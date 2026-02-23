@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { getUserProfile } from "../services/profileServices";
 import { getWorkoutStats } from "../services/workoutServices";
-import Navbar from "../components/navbar";
+import Heading from "../components/heading";
 
 const Profile = () => {
     const { session, signOut } = UserAuth();
@@ -75,25 +75,27 @@ const Profile = () => {
 
     return (
         <div>
-            <Navbar />
-            <h1>Profile Page</h1>
-            <h2>Welcome, {userData?.name || "Loading..."}</h2>
-            <div>
-                <h3>MAIN STATS</h3>
-                <p>Weight: {userData?.weight}</p>
-                <p>Max Bench Press: {userData?.bench_max || "0"} lbs</p>
-                <p>Max Squat: {userData?.squat_max || "0"} lbs</p>
-                <p>Max Deadlift: {userData?.deadlift_max || "0"} lbs</p>
-            </div>
-            <div>
-                <h3>TOTAL STATS:</h3>
-                <p>Total Days Worked Out: {daysWorkedOut || 0} days</p>
-                <p>Total Sets Lifted: {totalSets} sets</p>
-                <p>Total Reps Listed: {totalReps || 0} reps</p>
-                <p>Total Weight Lifted: {totalWeight || 0} lbs</p>
-            </div>
-            <div>
-                <p onClick={handleSignOut}>Sign Out</p>
+            <Heading />
+            <div className="pageContainer">
+                <h1>Profile Page </h1>
+                <h2>Welcome, {userData?.name || "Loading..."}</h2>
+                <div>
+                    <h3>MAIN STATS</h3>
+                    <p>Weight: {userData?.weight}</p>
+                    <p>Max Bench Press: {userData?.bench_max || "0"} lbs</p>
+                    <p>Max Squat: {userData?.squat_max || "0"} lbs</p>
+                    <p>Max Deadlift: {userData?.deadlift_max || "0"} lbs</p>
+                </div>
+                <div>
+                    <h3>TOTAL STATS:</h3>
+                    <p>Total Days Worked Out: {daysWorkedOut || 0} days</p>
+                    <p>Total Sets Lifted: {totalSets} sets</p>
+                    <p>Total Reps Listed: {totalReps || 0} reps</p>
+                    <p>Total Weight Lifted: {totalWeight || 0} lbs</p>
+                </div>
+                <div>
+                    <p onClick={handleSignOut}>Sign Out</p>
+                </div>
             </div>
         </div>
     )
