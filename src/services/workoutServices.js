@@ -33,3 +33,17 @@ export async function getWorkout(userId, date) {
 
         return data;
 }
+
+export async function getWorkoutStats(userId) {
+    const { data, error } = await supabase
+    .from("workouts")
+    .select("workout_date, sets, reps, weight")
+    .eq("user_id", userId)
+
+    if (error) {
+        console.error("Error fetching all workouts", error);
+        return null;
+    }
+    
+    return data;
+}
