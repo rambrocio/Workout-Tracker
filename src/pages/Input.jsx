@@ -7,7 +7,7 @@ import { createWorkout } from "../services/workoutServices";
 const Input = () => {
     const { session } = UserAuth();
     const [userData, setUserData] = useState(null);
-    const [muscleGroup, setMuscleGroup] = useState("");
+    const [muscleGroup, setMuscleGroup] = useState("Chest");
     const [exersizeName, setExersizeName] = useState("");
     const [sets, setSets] = useState("");
     const [reps, setReps] = useState("");
@@ -76,21 +76,18 @@ const Input = () => {
                         placeholder="Date"
                         value={date}
                     /> <br />
-
                     <label>
-                        Select Muscle Group Hit:
-                        <select>
-                            <option>Chest</option>
-                            <option>Back</option>
-                            <option>Legs</option>
-                            <option>Arms</option>
+                        <p>Select Muscle Group: </p>
+                        <select 
+                            value={muscleGroup}
+                            onChange={(e) => setMuscleGroup(e.target.value)}
+                        >
+                            <option value="Chest">Chest</option>
+                            <option value="Back">Back</option>
+                            <option value="Legs">Legs</option>
+                            <option value="Arms">Arms</option>
                         </select>
                     </label> <br />
-                    <input onChange={(e) => setMuscleGroup(e.target.value)}
-                        type="text"
-                        placeholder="Muscle Group Hit"
-                        value={muscleGroup}
-                    /> <br />
                     <input onChange={(e) => setExersizeName(e.target.value)}
                         type="text"
                         placeholder="Exercise Name"
