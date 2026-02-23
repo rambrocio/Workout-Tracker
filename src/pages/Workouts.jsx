@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import { UserAuth } from "../context/AuthContext";
 import { getUserProfile } from "../services/profileServices";
 import { getWorkout } from "../services/workoutServices";
+import { formatDate } from "../services/dateServices";
 
 const Workouts = () => {
     const { session } = UserAuth();
@@ -60,7 +61,7 @@ const Workouts = () => {
                 <> 
                     {workouts.length > 0 ? (
                         <>
-                            <h2>Your {searchDate} Workout</h2>
+                            <h2>Your {formatDate(searchDate)} Workout</h2>
                             <div>
                                 <h3>Body Parts Hit On This Day:</h3>
                                 {bodyPartsHit.map((name, index) => (
@@ -79,7 +80,7 @@ const Workouts = () => {
                         </>
                     ) : (
                         <>
-                            <p>YOU DID NOT WORKOUT ON: {searchDate}</p>
+                            <p>YOU DID NOT WORKOUT ON: {formatDate(searchDate)}</p>
                         </>
                     )}
                 </>
