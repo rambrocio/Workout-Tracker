@@ -41,6 +41,9 @@ Page Containers
     max-width: 1100px;
     margin: 0 auto;
     align-content: center;
+    display: grid;
+    place-items: center;
+    background-color: red;
 }
 
 /* =========================

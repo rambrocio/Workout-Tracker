@@ -20,6 +20,27 @@ export async function createWorkout(userId, muscleGroup, exersizeName, numSets, 
         return {success: true, data};
 }
 
+export async function updateWorkout(id, muscleGroup, exersizeName, numSets, numReps, workoutWeight, date) {
+    const { data, error } = await supabase
+        .from("workouts")
+        .update({
+            muscle_group: muscleGroup,
+            exersize_name: exersizeName,
+            sets: numSets,
+            reps: numReps,
+            weight: workoutWeight,
+            workout_date: date
+        })
+        .eq("id", id);
+
+        if (error) {
+            console.error("Error updating workout");
+            return {success:false, error: error.message};
+        }
+
+        return {success: true, data};
+}
+
 export async function getWorkout(userId, date) {
     const { data, error } = await supabase 
         .from("workouts")
