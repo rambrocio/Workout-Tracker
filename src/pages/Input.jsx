@@ -70,19 +70,18 @@ const Input = () => {
         <>
             <Heading />
             <div className="pageContainer">
-
                     <h2>Hello  {userData?.name || "Loading..."}, Input Your Workout Below</h2>
                     <form onSubmit={handleWorkoutInput} className="inputContainer">
                         <div className="section">
-                            <p>Select Workout Date</p>
+                            <p><b>Select Workout Date</b></p>
                              <input onChange={(e) => setDate(e.target.value)}
                                 type="date"
                                 placeholder="Date"
                                 value={date}
-                            /> <br />
+                            />
                         </div>
                         <label className="section">
-                            <p>Select Muscle Group: </p>
+                            <p><b>Select Muscle Group:</b></p>
                             <select 
                                 value={muscleGroup}
                                 onChange={(e) => setMuscleGroup(e.target.value)}
