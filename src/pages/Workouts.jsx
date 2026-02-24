@@ -52,7 +52,7 @@ const Workouts = () => {
         <>
             <Heading />
             <div className="pageContainer">
-                <h1>Your Workout Page</h1>
+                <h2>Your Workout Page</h2>
                 <form onSubmit={handleGetWorkout}>
                     <input onChange={(e) => setInputDate(e.target.value)}
                     type="date"

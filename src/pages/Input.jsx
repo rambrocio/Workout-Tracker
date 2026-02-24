@@ -71,14 +71,17 @@ const Input = () => {
             <Heading />
             <div className="pageContainer">
 
-                    <h1>Hello  {userData?.name || "Loading..."}, Input Your Workout Below</h1>
-                    <form onSubmit={handleWorkoutInput}>
-                        <input onChange={(e) => setDate(e.target.value)}
-                            type="date"
-                            placeholder="Date"
-                            value={date}
-                        /> <br />
-                        <label>
+                    <h2>Hello  {userData?.name || "Loading..."}, Input Your Workout Below</h2>
+                    <form onSubmit={handleWorkoutInput} className="inputContainer">
+                        <div className="section">
+                            <p>Select Workout Date</p>
+                             <input onChange={(e) => setDate(e.target.value)}
+                                type="date"
+                                placeholder="Date"
+                                value={date}
+                            /> <br />
+                        </div>
+                        <label className="section">
                             <p>Select Muscle Group: </p>
                             <select 
                                 value={muscleGroup}
@@ -89,32 +92,41 @@ const Input = () => {
                                 <option value="Legs">Legs</option>
                                 <option value="Arms">Arms</option>
                             </select>
-                        </label> <br />
-                        <input onChange={(e) => setExersizeName(e.target.value)}
-                            type="text"
-                            placeholder="Exercise Name"
-                            value={exersizeName}
-                        /> <br />
-                        <input onChange={(e) => setSets(e.target.value)}
-                            type="number"
-                            placeholder="Sets"
-                            value={sets}
-                        /> <br />
-                        <input onChange={(e) => setReps(e.target.value)}
-                            type="number"
-                            placeholder="Reps"
-                            value={reps}
-                        /> <br />
-                        <input onChange={(e) => setWeight(e.target.value)}
-                            type="number"
-                            placeholder="Weight"
-                            value={weight}
-                        /> <br/ >
-                        <button type="submit" disabled={loading}>Submit</button> 
-                        {error && <p>{error}</p>}
-                        <button>Clear</button>
+                        </label>
+                        <div className="section">
+                            <p>Enter Workout Information</p>
+                                <input onChange={(e) => setExersizeName(e.target.value)}
+                                    type="text"
+                                    placeholder="Exercise Name"
+                                    value={exersizeName}
+                                    className="inputs"
+                                />
+                                <input onChange={(e) => setSets(e.target.value)}
+                                    type="number"
+                                    placeholder="Sets"
+                                    value={sets}
+                                    className="inputs"
+                                />
+                                <input onChange={(e) => setReps(e.target.value)}
+                                    type="number"
+                                    placeholder="Reps"
+                                    value={reps}
+                                    className="inputs"
+                                />
+                                <input onChange={(e) => setWeight(e.target.value)}
+                                    type="number"
+                                    placeholder="Weight"
+                                    value={weight}
+                                    className="inputs"
+                                />
+                        </div>
+                        <div className="buttons">
+                            <button type="submit" disabled={loading}>Submit</button> 
+                            {error && <p>{error}</p>}
+                            <button>Clear</button>
+                        </div>
+
                     </form>
-   
             </div>
         </>
 

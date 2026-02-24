@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserProfile } from "../services/profileServices";
 import { getWorkoutStats } from "../services/workoutServices";
 import Heading from "../components/heading";
+import { background } from "@chakra-ui/react";
 
 const Profile = () => {
     const { session, signOut } = UserAuth();
@@ -77,8 +78,7 @@ const Profile = () => {
         <div>
             <Heading />
             <div className="pageContainer">
-                <h1>Profile Page </h1>
-                <h2>Welcome, {userData?.name || "Loading..."}</h2>
+                <h2>Welcome to your Profile, {userData?.name || "Loading..."}</h2>
                 <div>
                     <h3>MAIN STATS</h3>
                     <p>Weight: {userData?.weight}</p>
