@@ -76,7 +76,7 @@ const Workouts = () => {
                                         <p>Excersize Name: {workout?.exersize_name}</p>
                                         <p>Number of Sets: {workout?.sets}</p>
                                         <p>Number of Reps: {workout?.reps}</p>
-                                        <p>Amount Lifted: {workout?.weight}</p>
+                                        <p>Amount Lifted: {workout?.weight} lbs</p>
                                     </div>
                                 ))}
                             </>

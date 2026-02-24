@@ -94,7 +94,7 @@ const Profile = () => {
                     <p>Total Weight Lifted: {totalWeight || 0} lbs</p>
                 </div>
                 <div>
-                    <p onClick={handleSignOut}>Sign Out</p>
+                    <button onClick={handleSignOut}>Sign Out</button>
                 </div>
             </div>
         </div>

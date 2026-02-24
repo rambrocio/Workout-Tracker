@@ -69,6 +69,7 @@ const Input = () => {
         <>
             <Heading />
             <div className="pageContainer">
+                <div></div>
                 <h1>Hello  {userData?.name || "Loading..."}, Input Your Workout Below</h1>
                 <form onSubmit={handleWorkoutInput}>
                     <input onChange={(e) => setDate(e.target.value)}
