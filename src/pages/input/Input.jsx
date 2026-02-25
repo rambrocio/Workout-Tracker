@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
-import Heading from "../../components/heading";
-import { getUserProfile } from "../../services/profileServices";
 import { createWorkout } from "../../services/workoutServices";
+import loadUser from '../../hooks/loadUser';
+import Heading from "../../components/heading";
 import "./Input.css";
 
 const Input = () => {
     const { session } = UserAuth();
-    const [userData, setUserData] = useState(null);
+    const { userData } = loadUser(session);
     const [muscleGroup, setMuscleGroup] = useState("Chest");
     const [exersizeName, setExersizeName] = useState("");
     const [sets, setSets] = useState("");
@@ -17,21 +17,6 @@ const Input = () => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const loadData = async () => {
-        if (session?.user?.id) {
-                try {
-                    const data = await getUserProfile(session.user.id);
-                    setUserData(data);
-                } catch (err) {
-                    console.error("Fetch failed:", err);
-                    setError(error.message);
-                }
-            }
-        };
-        loadData(); 
-    }, [session]);
- 
     const handleWorkoutInput = async (e) => {
         e.preventDefault()
         setLoading(true)
@@ -122,7 +107,7 @@ const Input = () => {
                         <div className="buttons">
                             <button type="submit" disabled={loading}>Submit</button> 
                             {error && <p>{error}</p>}
-                            <button>Clear</button>
+                            <button type="button">Clear</button>
                         </div>
 
                     </form>

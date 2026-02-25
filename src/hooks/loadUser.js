@@ -16,7 +16,7 @@ function loadUser(session) {
                     setError(null);
                 } catch (err) {
                     console.error("Fetch failed:", err);
-                    setError(error.message);
+                    setError(err.message);
                 }
                 finally {
                     setLoading(false);
