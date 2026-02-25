@@ -8,7 +8,6 @@ import '../styling/Workouts.css'
 
 const Workouts = () => {
     const { session } = UserAuth();
-    const [userData, setUserData] = useState(null);
     const [inputDate, setInputDate] = useState("");
     const [searchDate, setSearchDate] = useState("");
     const [workouts, setWorkouts] = useState([]);
@@ -53,43 +52,52 @@ const Workouts = () => {
             <Heading />
             <div className="pageContainer">
                 <h2>Your Workout Page</h2>
-                <form onSubmit={handleGetWorkout}>
+                <div className="contentContainer">
+                <form onSubmit={handleGetWorkout} className="date">
+                    <p><b>Select Date to Display Workout</b></p>
                     <input onChange={(e) => setInputDate(e.target.value)}
-                    type="date"
-                    /> <br />
-                    <button type="submit" disabled={loading}>Submit</button>
+                        type="date"
+                    />
+                    <button type="submit" className="submitButton" disabled={loading}>Submit</button>
                 </form>
                 {searchDate ? (
-                    <> 
+                    <div className="workoutInfoContainer"> 
                         {workouts.length > 0 ? (
                             <>
-                                <h2>Your {formatDate(searchDate)} Workout</h2>
-                                <div>
+                                <h2><u>Your <b>{formatDate(searchDate)}</b> Workout</u></h2>
+                                <div class="muscleGroup">
                                     <h3>Body Parts Hit On This Day:</h3>
                                     {bodyPartsHit.map((name, index) => (
                                         <li key={index}>{name}</li>
                                     ))}
                                 </div>
-                                <h3>Exercises Done:</h3>
-                                {workouts.map((workout) => (
-                                    <div key={workout.id}>
-                                        <p>Excersize Name: {workout?.exersize_name}</p>
-                                        <p>Number of Sets: {workout?.sets}</p>
-                                        <p>Number of Reps: {workout?.reps}</p>
-                                        <p>Amount Lifted: {workout?.weight} lbs</p>
-                                    </div>
-                                ))}
+                                <div className="workoutInfo">
+                                    <h3>Exercises Done:</h3>
+                                    {workouts.map((workout) => (
+                                        <div key={workout.id} className="workouts">
+                                            <div className="workoutName">
+                                                <p>Excersize Name: <b>{workout?.exersize_name}</b></p>
+                                            </div>
+                                            <div className="workoutStats">
+                                                <p>Number of Sets: {workout?.sets}</p>
+                                                <p>Number of Reps: {workout?.reps}</p>
+                                                <p>Amount Lifted: {workout?.weight} lbs</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </>
                         ) : (
-                            <>
-                                <p>Sorry {userData?.name}, </p>
-                                <p> YOU DID NOT WORKOUT ON: {formatDate(searchDate)}</p>
-                            </>
-                        )}
-                    </>
+                            <div className="restDay">
+                                <p> You Did Not Workout On: </p>
+                                <h2>{formatDate(searchDate)}</h2>
+                            </div>
+                            )}                       
+                    </div>
                 ) : (
-                    <p>Please enter date</p>
-                )}
+                    <p></p>
+                    )}
+            </div>
             </div>
         </>
     );
