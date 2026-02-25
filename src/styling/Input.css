@@ -16,7 +16,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
+    width: 75%;
 }
 
 .inputs{
