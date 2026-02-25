@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getUserProfile } from "../services/profileServices";
 
-function loadUser(session) {
+function loadUserData(session) {
     const [userData, setUserData] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -29,4 +29,4 @@ function loadUser(session) {
     return { userData, error, loading };
 }
 
-export default loadUser;
+export default loadUserData;

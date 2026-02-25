@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { createWorkout } from "../../services/workoutServices";
-import loadUser from '../../hooks/loadUser';
+import loadUserData from '../../hooks/loadUserData';
 import Heading from "../../components/heading";
 import "./Input.css";
 
 const Input = () => {
     const { session } = UserAuth();
-    const { userData } = loadUser(session);
+    const { userData } = loadUserData(session);
     const [muscleGroup, setMuscleGroup] = useState("Chest");
     const [exersizeName, setExersizeName] = useState("");
     const [sets, setSets] = useState("");
