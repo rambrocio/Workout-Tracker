@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import './SignIn.css';
 
 const Signin = () => {
     const [email, setEmail] = useState("");
@@ -29,23 +30,27 @@ const Signin = () => {
     }
 
     return (
-        <div className="pageContainer">
-            <form onSubmit={handleSignIn}>
-                <h2>Sign In</h2>
-                <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
-                <div>
-                    <input onChange={(e) => setEmail(e.target.value)} 
-                        type="email" 
-                        placeholder="Email" 
-                    /> <br />
-                    <input onChange={(e) => setPassword(e.target.value)} 
-                        type="password" 
-                        placeholder="Password" 
-                    /> <br />
-                    <button type="submit" disabled={loading}>Sign In</button>
+        <div className="loginPageContainer">
+            <div className="loginContainer">
+                <form onSubmit={handleSignIn} className="loginForm">
+                    <h2>Sign In</h2>
+                    <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p> <br />
+                    <div className="loginInfoContainer">
+                        <input onChange={(e) => setEmail(e.target.value)} 
+                            type="email" 
+                            placeholder="Email" 
+                            className="loginInfo"
+                        /> <br />
+                        <input onChange={(e) => setPassword(e.target.value)} 
+                            type="password" 
+                            placeholder="Password"
+                            className="loginInfo" 
+                        /> <br />
+                    </div>
+                    <button type="submit" disabled={loading} className="loginButton">Sign In</button>
                     {error && <p>{error}</p>}
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     )
 }

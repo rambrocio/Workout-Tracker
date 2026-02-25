@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import './SignIn.css';
 
 const Signup = () => {
     const [email, setEmail] = useState("");
@@ -29,23 +30,27 @@ const Signup = () => {
     }
 
     return (
-        <div className="pageContainer">
-            <form onSubmit={handleSignUp}>
-                <h2>Sign Up</h2>
-                <div>
-                    <input onChange={(e) => setEmail(e.target.value)} 
-                        type="email" 
-                        placeholder="Email" 
-                    /> <br />
-                    <input onChange={(e) => setPassword(e.target.value)} 
-                        type="password" 
-                        placeholder="Password" 
-                    /> <br />
-                    <button type="submit" disabled={loading}>Sign Up</button>
+        <div className="loginPageContainer">
+            <div className="loginContainer">
+                <form onSubmit={handleSignUp} className="loginForm">
+                    <h2>Sign Up</h2>
+                    <p>Already have an account? <Link to='/signin'>Sign In</Link></p> <br />
+                    <div className="loginInfoContainer">
+                        <input onChange={(e) => setEmail(e.target.value)} 
+                            type="email" 
+                            placeholder="Email"
+                            className="loginInfo" 
+                        /> <br />
+                        <input onChange={(e) => setPassword(e.target.value)} 
+                            type="password" 
+                            placeholder="Password"
+                            className="loginInfo" 
+                        /> <br />
+                    </div>
+                    <button type="submit" disabled={loading} className="loginButton">Sign Up</button>
                     {error && <p>{error}</p>}
-                </div>
-                <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
-            </form>
+                </form>
+            </div>
         </div>
     )
 }
