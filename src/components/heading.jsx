@@ -11,8 +11,9 @@ export default function Heading() {
                 </div>
                 <div className="navbar-items">
                     <Link to='/input'>Input</Link>
-                    <Link to='/workouts'>My Workouts</Link>
-                    <Link to='/profile'>Profile</Link>
+                    <Link to='/workouts'>Workouts</Link>
+                    <Link to='/stats'>Stats</Link>
+                    <Link to='/progress'>Progress</Link>
                 </div>
             </div>
         </>

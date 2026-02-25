@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { getUserProfile } from "../services/profileServices";
-import { getWorkoutStats } from "../services/workoutServices";
-import Heading from "../components/heading";
+import { getUserProfile } from "../../services/profileServices";
+import { getWorkoutStats } from "../../services/workoutServices";
+import Heading from "../../components/heading";
+import './Stats.css';
 
 
-const Profile = () => {
+const Stats = () => {
     const { session, signOut } = UserAuth();
     const [userData, setUserData] = useState(null);
     const [daysWorkedOut, setDaysWorkedOut] = useState(0);
@@ -78,7 +79,7 @@ const Profile = () => {
         <div>
             <Heading />
             <div className="pageContainer">
-                <h2>Welcome To Your Profile, {userData?.name || "Loading..."}</h2>
+                <h2>Here Are Your Stats, {userData?.name || "Loading..."}</h2>
                 <div className="contentContainer">
                     <div className="section">
                         <h2><u>MAIN STATS:</u></h2>
@@ -107,4 +108,4 @@ const Profile = () => {
     )
 }
 
-export default Profile;
+export default Stats;

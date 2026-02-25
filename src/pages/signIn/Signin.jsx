@@ -1,25 +1,25 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 
-const Signup = () => {
+const Signin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState("");
 
-    const { session, signUpNewUser } = UserAuth();
+    const { session, signInUser } = UserAuth();
     const navigate = useNavigate();
     console.log(session);
 
-    const handleSignUp = async (e) => {
+    const handleSignIn = async (e) => {
         e.preventDefault()
         setLoading(true)
         try {
-            const result = await signUpNewUser(email, password)
+            const result = await signInUser(email, password)
             
             if (result.success) {
-                navigate('/signup2')
+                navigate('/input')
             }
         } catch (error) {
             setError("ERROR OCCURED!");
@@ -30,8 +30,9 @@ const Signup = () => {
 
     return (
         <div className="pageContainer">
-            <form onSubmit={handleSignUp}>
-                <h2>Sign Up</h2>
+            <form onSubmit={handleSignIn}>
+                <h2>Sign In</h2>
+                <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
                 <div>
                     <input onChange={(e) => setEmail(e.target.value)} 
                         type="email" 
@@ -41,13 +42,12 @@ const Signup = () => {
                         type="password" 
                         placeholder="Password" 
                     /> <br />
-                    <button type="submit" disabled={loading}>Sign Up</button>
+                    <button type="submit" disabled={loading}>Sign In</button>
                     {error && <p>{error}</p>}
                 </div>
-                <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
             </form>
         </div>
     )
 }
 
-export default Signup;
+export default Signin;

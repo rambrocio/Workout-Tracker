@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
-import { createUserProfile } from "../services/profileServices";
+import { UserAuth } from "../../context/AuthContext";
+import { createUserProfile } from "../../services/profileServices";
 
 const Signup2 = () => {
     const [name, setName] = useState("");

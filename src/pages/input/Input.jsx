@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { UserAuth } from "../context/AuthContext";
-import Heading from "../components/heading";
-import { getUserProfile } from "../services/profileServices";
-import { createWorkout } from "../services/workoutServices";
-import "../styling/Input.css";
+import { UserAuth } from "../../context/AuthContext";
+import Heading from "../../components/heading";
+import { getUserProfile } from "../../services/profileServices";
+import { createWorkout } from "../../services/workoutServices";
+import "./Input.css";
 
 const Input = () => {
     const { session } = UserAuth();

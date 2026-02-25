@@ -1,11 +1,12 @@
 import { createHashRouter } from "react-router-dom";
 import App from "./App";
-import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
-import Signup2 from './pages/Signup2';
-import Profile from "./pages/Profile";
-import Input from "./pages/Input";
-import Workouts from "./pages/Workouts";
+import Signin from "./pages/signIn/Signin";
+import Signup from "./pages/signIn/Signup";
+import Signup2 from './pages/signIn/Signup2';
+import Stats from "./pages/stats/Stats";
+import Input from "./pages/input/Input";
+import Workouts from "./pages/workout/Workouts";
+import Progress from './pages/progress/Progress';
 import PrivateRoute from "./pages/PrivateRoute";
 
 export const router = createHashRouter([
@@ -13,8 +14,9 @@ export const router = createHashRouter([
     { path:"/signup", element: <Signup /> },
     { path:"/signup2", element: <Signup2 /> },
     { path:"/signin", element: <Signin /> },
-    { path:"/Profile", element: <PrivateRoute> <Profile /></PrivateRoute> },
+    { path:"/stats", element: <PrivateRoute> <Stats /></PrivateRoute> },
     { path:"/input", element: <PrivateRoute> <Input /></PrivateRoute> },
     { path:"/workouts", element: <PrivateRoute> <Workouts /></PrivateRoute> },
+    { path:"/progress", element: <PrivateRoute> <Progress /></PrivateRoute> },
     { path:"*", element: "PAGE NOT FOUND"},
 ]);
