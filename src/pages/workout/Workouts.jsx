@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Heading from "../../components/heading";
 import { UserAuth } from "../../context/AuthContext";
-import { getUserProfile } from "../../services/profileServices";
 import { getWorkout } from "../../services/workoutServices";
 import { formatDate } from "../../services/dateServices";
 import './Workouts.css'
@@ -15,21 +14,6 @@ const Workouts = () => {
     const [loading, setLoading] = useState(false);
     
     const bodyPartsHit = [... new Set(workouts.map(bodyPart => bodyPart.muscle_group))];
-
-    useEffect(() => {
-        const loadData = async () => {
-        if (session?.user?.id) {
-                try {
-                    const data = await getUserProfile(session.user.id);
-                    setUserData(data);
-                } catch (err) {
-                    console.error("Fetch failed:", err);
-                    setError(error.message);
-                }
-            }
-        };
-        loadData(); 
-    }, [session]);
 
     const handleGetWorkout = async(e) => {
         e.preventDefault()

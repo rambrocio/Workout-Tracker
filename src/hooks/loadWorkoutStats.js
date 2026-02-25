@@ -1,5 +1,5 @@
-import { getWorkoutStats } from "../../services/workoutServices";    const [daysWorkedOut, setDaysWorkedOut] = useState(0);
-    
+import { getWorkoutStats } from "../services/workoutServices";  
+
 function loadWorkoutStats() {
     const [daysWorkedOut, setDaysWorkedOut] = useState(0);
     const [totalSets, setTotalSets] = useState(0);
