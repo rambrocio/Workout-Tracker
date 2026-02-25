@@ -13,7 +13,6 @@ export default function Heading() {
                     <Link to='/input'>Input</Link>
                     <Link to='/workouts'>Workouts</Link>
                     <Link to='/stats'>Stats</Link>
-                    <Link to='/progress'>Progress</Link>
                 </div>
             </div>
         </>
