@@ -9,7 +9,7 @@ import './Stats.css';
 const Stats = () => {
     const { session, signOut } = UserAuth();
     const { userData } = loadUserData(session);
-    const { daysWorkedOut, totalSets, totalReps, totalWeight} = loadWorkoutStats(session.user.id);
+    const { daysWorkedOut, totalSets, totalReps, totalWeight} = loadWorkoutStats(session);
     const navigate = useNavigate();
 
     const handleSignOut = async (e) => {

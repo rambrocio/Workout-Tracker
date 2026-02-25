@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Heading from "../../components/heading";
 import { UserAuth } from "../../context/AuthContext";
 import { getWorkout } from "../../services/workoutServices";
 import { formatDate } from "../../services/dateServices";
+import Heading from "../../components/heading";
 import './Workouts.css'
 
 const Workouts = () => {
