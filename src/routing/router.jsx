@@ -1,13 +1,13 @@
 import { createHashRouter } from "react-router-dom";
-import App from "./App";
-import Signin from "./pages/signIn/Signin";
-import Signup from "./pages/signIn/Signup";
-import Signup2 from './pages/signIn/Signup2';
-import Stats from "./pages/stats/Stats";
-import Input from "./pages/input/Input";
-import Workouts from "./pages/workout/Workouts";
-import Progress from './pages/progress/Progress';
-import PrivateRoute from "./pages/PrivateRoute";
+import App from "../App";
+import Signin from "../pages/signIn/Signin";
+import Signup from "../pages/signIn/Signup";
+import Signup2 from '../pages/signIn/Signup2';
+import Stats from "../pages/stats/Stats";
+import Input from "../pages/input/Input";
+import Workouts from "../pages/workout/Workouts";
+import Progress from '../pages/progress/Progress';
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createHashRouter([
     { path:"/", element: <App /> },
