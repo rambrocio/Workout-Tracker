@@ -9,12 +9,20 @@ export const useWorkoutLoader = (session, inputDate) => {
 
     const loadWorkout = async () => {
         setError("");
+        if (!inputDate) {
+            setError("Date cannot be empty");
+            return;
+        }
         setLoading(false);
         try {
             const userId = session?.user?.id;
             const workout = await getWorkout(userId, inputDate);
-            setWorkouts(workout);
-            setSearchDate(inputDate);
+            if (workout) {
+                setWorkouts(workout);
+                setSearchDate(inputDate);
+            } else {
+                setError(error.message);
+            }
 
         } catch (error) {
             setError("Error occured retrieving workout");
@@ -24,6 +32,7 @@ export const useWorkoutLoader = (session, inputDate) => {
     }
     return {workouts, setWorkouts,
             searchDate, setSearchDate,
+            error,
             loadWorkout
     };
 };

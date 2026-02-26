@@ -53,6 +53,7 @@ export async function getWorkout(userId, date) {
 
         if (error) {
             console.error("Error fetching workout: ", error);
+            return error;
         }
 
         return data;

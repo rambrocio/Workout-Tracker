@@ -11,8 +11,8 @@ const Workouts = () => {
     const [inputDate, setInputDate] = useState("");
     const { workouts, setWorkouts, 
             searchDate, setSearchDate,
+            error,
             loadWorkout } = useWorkoutLoader(session, inputDate);
-    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     
     const bodyPartsHit = [... new Set(workouts.map(bodyPart => bodyPart.muscle_group))];
@@ -34,6 +34,7 @@ const Workouts = () => {
                         type="date"
                     />
                     <button type="submit" className="submitButton" disabled={loading}>Submit</button>
+                    {error && <p className="errorMessage">{error}</p>}
                 </form>
                 {searchDate ? (
                     <div className="workoutInfoContainer"> 
