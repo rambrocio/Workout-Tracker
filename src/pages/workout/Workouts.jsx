@@ -8,8 +8,7 @@ import './Workouts.css'
 const Workouts = () => {
     const { session } = UserAuth();
     const [inputDate, setInputDate] = useState("");
-    const { workouts, searchDate, error, loadWorkout } = useWorkoutLoader(session, inputDate);
-    const [loading, setLoading] = useState(false);
+    const { workouts, searchDate, error, loading, loadWorkout } = useWorkoutLoader(session, inputDate);
     
     const bodyPartsHit = [... new Set(workouts.map(bodyPart => bodyPart.muscle_group))];
 

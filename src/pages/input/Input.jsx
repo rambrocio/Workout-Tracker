@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { useUserLoader } from '../../hooks/useUserLoader';
 import Heading from "../../components/heading";
@@ -14,9 +13,8 @@ const Input = () => {
             reps, setReps,
             weight, setWeight,
             date, setDate,
-            error, setError,
+            error, setError, loading,
             inputWorkout } = useWorkoutInput(session); 
-    const [loading, setLoading] = useState(false);
 
     const handleWorkoutInput = async (e) => {
         e.preventDefault();

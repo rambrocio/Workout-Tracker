@@ -32,7 +32,7 @@ export const useWorkoutLoader = (session, inputDate) => {
     }
     return {workouts, setWorkouts,
             searchDate, setSearchDate,
-            error,
+            error, loading,
             loadWorkout
     };
 };

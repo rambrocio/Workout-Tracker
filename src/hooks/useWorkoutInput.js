@@ -71,7 +71,7 @@ export const useWorkoutInput = (session) => {
         reps, setReps,
         weight, setWeight,
         date, setDate,
-        error, setError,
+        error, setError, loading,
         inputWorkout
     };
 };

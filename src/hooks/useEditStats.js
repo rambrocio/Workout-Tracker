@@ -56,7 +56,7 @@ export const useEditStats = (session) => {
             newMaxBench, setNewMaxBench,
             newMaxSquat, setNewMaxSquat,
             newMaxDeadlift, setNewMaxDeadlift,
-            error,
+            error, loading,
             editStats
     };
 };

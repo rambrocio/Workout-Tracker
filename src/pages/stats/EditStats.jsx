@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useEditStats } from "../../hooks/useEditStats";
 import { UserAuth } from "../../context/AuthContext";
 import './Stats.css'
@@ -11,9 +10,8 @@ const EditStats = () => {
             newMaxBench, setNewMaxBench,
             newMaxSquat, setNewMaxSquat,
             newMaxDeadlift, setNewMaxDeadlift,
-            error,
+            error, loading,
             editStats } = useEditStats(session);
-    const [loading, setLoading] = useState(false);
 
     const goBack = () => {
         navigate('/stats');
