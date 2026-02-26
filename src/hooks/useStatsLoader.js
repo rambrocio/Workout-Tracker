@@ -1,7 +1,7 @@
 import { getWorkoutStats } from "../services/workoutServices";  
 import { useEffect, useState } from "react";
 
-function loadWorkoutStats(session) {
+function useStatsLoader(session) {
     const [daysWorkedOut, setDaysWorkedOut] = useState(0);
     const [totalSets, setTotalSets] = useState(0);
     const [totalReps, setTotalReps] = useState(0);
@@ -43,4 +43,4 @@ function loadWorkoutStats(session) {
     return { daysWorkedOut, totalSets, totalReps, totalWeight}
 }
 
-export default loadWorkoutStats;
+export default useStatsLoader;

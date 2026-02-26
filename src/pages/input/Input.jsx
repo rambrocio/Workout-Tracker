@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { createWorkout } from "../../services/workoutServices";
-import loadUserData from '../../hooks/loadUserData';
+import useUserLoader from '../../hooks/useUserLoader';
 import Heading from "../../components/heading";
 import "./Input.css";
 
 const Input = () => {
     const { session } = UserAuth();
-    const { userData } = loadUserData(session);
+    const { userData } = useUserLoader(session);
     const [muscleGroup, setMuscleGroup] = useState("Chest");
     const [exersizeName, setExersizeName] = useState("");
     const [sets, setSets] = useState("");
@@ -42,6 +42,7 @@ const Input = () => {
                 setSets("");
                 setReps("");
                 setWeight("");
+                setDate("");
             }
 
         } catch (error) {
@@ -49,6 +50,16 @@ const Input = () => {
         } finally {
             setLoading(false);
         }
+    }
+
+    const clearInputs =  () => {
+        setMuscleGroup("Chest");
+        setExersizeName("");
+        setSets("");
+        setReps("");
+        setWeight("");
+        setDate("");
+        setError("");
     }
 
     return (
@@ -107,7 +118,7 @@ const Input = () => {
                         <div className="buttons">
                             <button type="submit" disabled={loading}>Submit</button> 
                             {error && <p>{error}</p>}
-                            <button type="button">Clear</button>
+                            <button type="button" onClick={clearInputs}>Clear</button>
                         </div>
 
                     </form>

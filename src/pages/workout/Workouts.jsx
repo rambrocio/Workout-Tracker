@@ -49,7 +49,7 @@ const Workouts = () => {
                         {workouts.length > 0 ? (
                             <>
                                 <h2><u>Your <b>{formatDate(searchDate)}</b> Workout</u></h2>
-                                <div class="muscleGroup">
+                                <div className="muscleGroup">
                                     <h3>Body Parts Hit On This Day:</h3>
                                     {bodyPartsHit.map((name, index) => (
                                         <li key={index}>{name}</li>

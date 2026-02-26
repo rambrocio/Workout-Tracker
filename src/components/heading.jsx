@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
+import { useSignOut } from "../hooks/useSignOut";
 import '../styling/Heading.css';
 
 export default function Heading() {
+    const { logout } = useSignOut();
+
+    const handleSignOut = (e) => {
+        e.preventDefault();
+        logout();
+    };
+
     return (
         <>
             <h1 className="title">Roberto's Workout Tracker</h1>
             <div className="navbar">
                 <div>
-                    <p>placeholder</p>
+                    <p onClick={handleSignOut} className="signOut"><i>Sign Out</i></p>
                 </div>
                 <div className="navbar-items">
                     <Link to='/input'>Input</Link>

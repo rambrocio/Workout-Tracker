@@ -1,26 +1,16 @@
 import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import loadUserData from "../../hooks/loadUserData";
-import loadWorkoutStats from "../../hooks/loadWorkoutStats";
+import loadUserData from "../../hooks/useUserLoader";
+import useStatsLoader from "../../hooks/useStatsLoader";
 import Heading from "../../components/heading";
 import './Stats.css';
 
 
 const Stats = () => {
-    const { session, signOut } = UserAuth();
+    const { session } = UserAuth();
     const { userData } = loadUserData(session);
-    const { daysWorkedOut, totalSets, totalReps, totalWeight} = loadWorkoutStats(session);
-    const navigate = useNavigate();
+    const { daysWorkedOut, totalSets, totalReps, totalWeight} = useStatsLoader(session);
 
-    const handleSignOut = async (e) => {
-        e.preventDefault()
-        try {
-            await signOut();
-            navigate('/');
-        } catch (err) {
-            console.error(err);
-        }
-    };
 
     return (
         <div>
@@ -46,9 +36,6 @@ const Stats = () => {
                             <p><b>Total Weight Lifted:</b> {totalWeight || 0} lbs</p>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <button onClick={handleSignOut}>Sign Out</button>
                 </div>
             </div>
         </div>
