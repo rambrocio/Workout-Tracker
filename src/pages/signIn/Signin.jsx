@@ -15,15 +15,18 @@ const Signin = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault()
+        setError("");
         setLoading(true)
         try {
             const result = await signInUser(email, password)
             
             if (result.success) {
                 navigate('/input')
+            } else {
+                setError(result.error || "Invalid Login Credentials");
             }
         } catch (error) {
-            setError("ERROR OCCURED!");
+            setError("Error Occuerd: ", error.message);
         } finally {
             setLoading(false);
         }
@@ -39,15 +42,17 @@ const Signin = () => {
                             type="email" 
                             placeholder="Email" 
                             className="loginInfo"
+                            required
                         /> <br />
                         <input onChange={(e) => setPassword(e.target.value)} 
                             type="password" 
                             placeholder="Password"
                             className="loginInfo" 
+                            required
                         /> <br />
                     </div>
                     <button type="submit" disabled={loading} className="loginButton">Sign In</button>
-                    {error && <p>{error}</p>}
+                    {error && <p className="errorMessage">{error}</p>}
                     <br />
                     <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
                 </form>

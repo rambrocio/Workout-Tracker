@@ -72,6 +72,12 @@ h2, p {
   color: var(--text-muted);
 }
 
+.errorMessage {
+  color: red;
+  font-style: italic;
+  margin-bottom: -24px;
+}
+
 /* =========================
 Base Button Style
 ========================= */

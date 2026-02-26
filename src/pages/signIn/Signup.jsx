@@ -14,16 +14,17 @@ const Signup = () => {
     console.log(session);
 
     const handleSignUp = async (e) => {
-        e.preventDefault()
-        setLoading(true)
+        e.preventDefault();
+        setError("");
+        setLoading(true);
         try {
             const result = await signUpNewUser(email, password)
             
             if (result.success) {
-                navigate('/signup2')
+                navigate('/signup2');
             }
         } catch (error) {
-            setError("ERROR OCCURED!");
+            setError("Error Occured: ", error.message);
         } finally {
             setLoading(false);
         }
@@ -39,11 +40,13 @@ const Signup = () => {
                             type="email" 
                             placeholder="Email"
                             className="loginInfo" 
+                            required
                         /> <br />
                         <input onChange={(e) => setPassword(e.target.value)} 
                             type="password" 
                             placeholder="Password"
                             className="loginInfo" 
+                            required
                         /> <br />
                     </div>
                     <button type="submit" disabled={loading} className="loginButton">Sign Up</button>

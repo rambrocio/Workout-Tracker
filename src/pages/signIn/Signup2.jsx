@@ -18,8 +18,24 @@ const Signup2 = () => {
 
     const handleSignUp2 = async (e) => {
         e.preventDefault()
-        setLoading(true)
         setError("")
+        if (weight < 1) {
+            setError("Weight cannot be less than 1 lb");
+            return;
+        }
+        if (maxBench < 0) {
+            setError("Max Bench cannot be less than 0 lbs");
+            return;
+        }
+        if (maxSquat < 0) {
+            setError("Max Squat cannot be less than 0 lbs");
+            return;
+        }
+        if (maxDeadlift < 0) {
+            setError("Max Deadlift cannot be less than 0 lbs");
+            return;
+        }
+        setLoading(true)
         try {
             if (!session?.user) {
                 throw new Error("No user found");
@@ -55,30 +71,35 @@ const Signup2 = () => {
                             type="text" 
                             placeholder="Name"
                             className="loginInfo" 
+                            required
                         /> <br />
                         <input onChange={(e) => setWeight(e.target.value)} 
                             type="number" 
                             placeholder="Weight"
-                            className="loginInfo" 
+                            className="loginInfo"
+                            required 
                         /> <br />
                         <input onChange={(e) => setMaxBench(e.target.value)} 
                             type="number" 
                             placeholder="Bench" 
                             className="loginInfo"
+                            required
                         /> <br />
                         <input onChange={(e) => setMaxSquat(e.target.value)} 
                             type="number" 
                             placeholder="Squat"
                             className="loginInfo"
+                            required
                         /> <br />
                         <input onChange={(e) => setMaxDeadlift(e.target.value)} 
                             type="number" 
                             placeholder="Deadlift" 
                             className="loginInfo"
+                            required
                         /> <br />
                     </div>
                     <button type="submit" disabled={loading} className="loginButton">Complete Profile</button>
-                    {error && <p>{error}</p>}
+                    {error && <p className="errorMessage">{error}</p>}
                     <br />
                     <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
                 </form>
