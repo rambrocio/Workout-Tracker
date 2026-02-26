@@ -1,7 +1,7 @@
 import { getWorkoutStats } from "../services/workoutServices";  
 import { useEffect, useState } from "react";
 
-function useStatsLoader(session) {
+export const useStatsLoader = (session) => {
     const [daysWorkedOut, setDaysWorkedOut] = useState(0);
     const [totalSets, setTotalSets] = useState(0);
     const [totalReps, setTotalReps] = useState(0);
@@ -41,6 +41,4 @@ function useStatsLoader(session) {
         }, [session.user.id]);
 
     return { daysWorkedOut, totalSets, totalReps, totalWeight}
-}
-
-export default useStatsLoader;
+};

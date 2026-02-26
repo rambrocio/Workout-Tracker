@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { createWorkout } from "../../services/workoutServices";
-import useUserLoader from '../../hooks/useUserLoader';
+import { useUserLoader } from '../../hooks/useUserLoader';
 import Heading from "../../components/heading";
 import "./Input.css";
 

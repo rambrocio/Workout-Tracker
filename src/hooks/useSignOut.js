@@ -6,8 +6,13 @@ export const useSignOut = () => {
     const navigate = useNavigate();
 
     const logout = async () => {
-        await signOut();
-        navigate('/');
+        try {
+            await signOut();
+            navigate('/');
+        } catch (error) {
+            console.error("Logout failed", error);
+        }
     };
+
     return {logout};
-}
+};

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useSignOut } from "../hooks/useSignOut";
 import '../styling/Heading.css';
 
-export default function Heading() {
+const Heading = () => {
     const { logout } = useSignOut();
 
     const handleSignOut = (e) => {
@@ -26,3 +26,5 @@ export default function Heading() {
         </>
     );
 }
+
+export default Heading;
