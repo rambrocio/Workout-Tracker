@@ -14,7 +14,7 @@ const Input = () => {
             reps, setReps,
             weight, setWeight,
             date, setDate,
-            error,
+            error, setError,
             inputWorkout } = useWorkoutInput(session); 
     const [loading, setLoading] = useState(false);
 
