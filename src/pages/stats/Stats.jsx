@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { useUserLoader } from "../../hooks/useUserLoader";
 import { useStatsLoader } from "../../hooks/useStatsLoader";
@@ -8,6 +9,11 @@ const Stats = () => {
     const { session } = UserAuth();
     const { userData } = useUserLoader(session);
     const { daysWorkedOut, totalSets, totalReps, totalWeight} = useStatsLoader(session);
+    const navigate = useNavigate();
+
+    const editStats = () => {
+        navigate('/editStats');
+    }
 
     return (
         <div>
@@ -28,12 +34,14 @@ const Stats = () => {
                         <h2><u>TOTAL STATS:</u></h2>
                         <div className="stats">
                             <p className="statsText"><b>Total Days Worked Out:</b> {daysWorkedOut || 0} days</p>
-                            <p className="statsText"><b>Total Sets Lifted:</b> {totalSets} sets</p>
-                            <p className="statsText"><b>Total Reps Listed:</b> {totalReps || 0} reps</p>
+                            <p className="statsText"><b>Total Sets Completed:</b> {totalSets} sets</p>
+                            <p className="statsText"><b>Total Reps Completed:</b> {totalReps || 0} reps</p>
                             <p><b>Total Weight Lifted:</b> {totalWeight || 0} lbs</p>
                         </div>
                     </div>
                 </div>
+                <br />
+                <button onClick={editStats}>Edit Stats</button>
             </div>
         </div>
     )

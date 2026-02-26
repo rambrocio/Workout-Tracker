@@ -17,7 +17,27 @@ export async function createUserProfile(userId, name, weight, maxBench, maxSquat
             throw error
         }
 
-        return {success: true, data };
+        return {success: true, data};
+}
+
+export async function updateUserProfile(userId, weight, maxBench, maxSquat, maxDeadlift) {
+    const { data, error } = await supabase
+        .from ("profile")
+        .update({
+            weight: weight,
+            bench_max: maxBench,
+            squat_max: maxSquat,
+            deadlift_max: maxDeadlift
+        })
+        .eq("id", userId)
+        .single();
+
+        if (error) {
+            console.error("Error updating Profile");
+            throw errow;
+        }
+        
+        return {success: true, data};
 }
 
 export async function getUserProfile(userId) {

@@ -21,7 +21,7 @@ const Input = () => {
     const handleWorkoutInput = async (e) => {
         e.preventDefault();
         await inputWorkout();
-    }
+    };
 
     const clearInputs =  () => {
         setMuscleGroup("Chest");
@@ -31,7 +31,7 @@ const Input = () => {
         setWeight("");
         setDate("");
         setError("");
-    }
+    };
 
     return (
         <>

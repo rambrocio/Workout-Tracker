@@ -21,6 +21,8 @@ export async function createWorkout(userId, muscleGroup, exersizeName, numSets, 
 }
 
 export async function updateWorkout(id, muscleGroup, exersizeName, numSets, numReps, workoutWeight, date) {
+    if (!id) return { success: false, error: "A valid ID is required to update." };
+
     const { data, error } = await supabase
         .from("workouts")
         .update({
@@ -31,14 +33,15 @@ export async function updateWorkout(id, muscleGroup, exersizeName, numSets, numR
             weight: workoutWeight,
             workout_date: date
         })
-        .eq("id", id);
+        .eq("id", id)
+        .select();
 
-        if (error) {
-            console.error("Error updating workout");
-            return {success:false, error: error.message};
-        }
+    if (error) {
+        console.error("Error updating workout:", error.message);
+        return { success: false, error: error.message };
+    }
 
-        return {success: true, data};
+    return { success: true, data };
 }
 
 export async function getWorkout(userId, date) {

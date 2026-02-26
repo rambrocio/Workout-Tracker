@@ -15,7 +15,7 @@ export const useWorkoutInput = (session) => {
         setError("");
         setLoading(true);
         try {
-            if (!session?.user) {
+            if (!session?.user?.id) {
                 throw new Error("No user found");
             }
 
@@ -44,7 +44,7 @@ export const useWorkoutInput = (session) => {
         } finally {
             setLoading(false);
         }
-    }
+    };
 
     return {
         muscleGroup, setMuscleGroup,
