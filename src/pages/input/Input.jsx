@@ -14,8 +14,8 @@ const Input = () => {
             reps, setReps,
             weight, setWeight,
             date, setDate,
+            error,
             inputWorkout } = useWorkoutInput(session); 
-    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
     const handleWorkoutInput = async (e) => {
@@ -66,32 +66,35 @@ const Input = () => {
                                     placeholder="Exercise Name"
                                     value={exersizeName}
                                     className="inputs"
+                                    required
                                 />
                                 <input onChange={(e) => setSets(e.target.value)}
                                     type="number"
                                     placeholder="Sets"
                                     value={sets}
                                     className="inputs"
+                                    required
                                 />
                                 <input onChange={(e) => setReps(e.target.value)}
                                     type="number"
                                     placeholder="Reps"
                                     value={reps}
                                     className="inputs"
+                                    required
                                 />
                                 <input onChange={(e) => setWeight(e.target.value)}
                                     type="number"
                                     placeholder="Weight"
                                     value={weight}
                                     className="inputs"
+                                    required
                                 />
                         </div>
                         <div className="buttons">
                             <button type="submit" disabled={loading}>Submit</button> 
-                            {error && <p>{error}</p>}
                             <button type="button" onClick={clearInputs}>Clear</button>
                         </div>
-
+                        {error && <p className="errorMessage">{error}</p>} <br />
                     </form>
             </div>
         </>

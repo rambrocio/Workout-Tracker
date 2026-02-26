@@ -13,6 +13,22 @@ export const useWorkoutInput = (session) => {
 
     const inputWorkout = async () => {
         setError("");
+        if (date == "") {
+            setError("Date cannot be empty");
+            return;
+        }
+        if (sets < 0) {
+            setError("Sets cannot be less than 0");
+            return;
+        }
+        if (reps < 0) {
+            setError("Reps cannot be less than 0");
+            return;
+        }
+        if (weight < 0) {
+            setError("Weight cannot be less than 0");
+            return;
+        }
         setLoading(true);
         try {
             if (!session?.user?.id) {
@@ -55,6 +71,7 @@ export const useWorkoutInput = (session) => {
         reps, setReps,
         weight, setWeight,
         date, setDate,
+        error,
         inputWorkout
     };
 };
