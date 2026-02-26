@@ -49,8 +49,7 @@ const Signup2 = () => {
         <div className="loginPageContainer">
             <div className="loginContainer">
                 <form onSubmit={handleSignUp2} className="loginForm">
-                    <h2>Sign Up Continued</h2>
-                    <p>Already have an account? <Link to='/signin'>Sign In</Link></p> <br />
+                    <h2>Sign Up (Continued)</h2> <br />
                     <div className="loginInfoContainer">
                         <input onChange={(e) => setName(e.target.value)} 
                             type="text" 
@@ -80,6 +79,8 @@ const Signup2 = () => {
                     </div>
                     <button type="submit" disabled={loading} className="loginButton">Complete Profile</button>
                     {error && <p>{error}</p>}
+                    <br />
+                    <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
                 </form>
             </div>
         </div>

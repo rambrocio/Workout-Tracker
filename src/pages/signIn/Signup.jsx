@@ -33,8 +33,7 @@ const Signup = () => {
         <div className="loginPageContainer">
             <div className="loginContainer">
                 <form onSubmit={handleSignUp} className="loginForm">
-                    <h2>Sign Up</h2>
-                    <p>Already have an account? <Link to='/signin'>Sign In</Link></p> <br />
+                    <h2>Sign Up</h2> <br />
                     <div className="loginInfoContainer">
                         <input onChange={(e) => setEmail(e.target.value)} 
                             type="email" 
@@ -49,6 +48,8 @@ const Signup = () => {
                     </div>
                     <button type="submit" disabled={loading} className="loginButton">Sign Up</button>
                     {error && <p>{error}</p>}
+                    <br />
+                    <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
                 </form>
             </div>
         </div>
