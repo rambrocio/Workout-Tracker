@@ -8,3 +8,13 @@
 .statsText {
     margin-bottom: -4px;
 }
+
+.editInput {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+
+.editText {
+    margin-bottom: 4px;
+}

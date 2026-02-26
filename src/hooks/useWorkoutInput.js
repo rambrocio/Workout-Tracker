@@ -31,6 +31,8 @@ export const useWorkoutInput = (session) => {
 
             if (result.success) {
                 console.log("Workout inputted successfully");
+                setDate("");
+                setMuscleGroup("Chest");
                 setExersizeName("");
                 setSets("");
                 setReps("");

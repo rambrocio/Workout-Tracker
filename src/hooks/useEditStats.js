@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { updateUserProfile } from "../services/profileServices";
 
-export const useEditWorkout = (session) => {
+export const useEditStats = (session) => {
     const [newWeight, setNewWeight] = useState("");
     const [newMaxBench, setNewMaxBench] = useState("");
     const [newMaxSquat, setNewMaxSquat] = useState("");
@@ -9,7 +9,7 @@ export const useEditWorkout = (session) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const editWorkout = async () => {
+    const editStats = async () => {
         setError("");
         setLoading(true);
         try {
@@ -40,6 +40,6 @@ export const useEditWorkout = (session) => {
             newMaxBench, setNewMaxBench,
             newMaxSquat, setNewMaxSquat,
             newMaxDeadlift, setNewMaxDeadlift,
-            editWorkout
+            editStats
     };
 };

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useEditWorkout } from "../../hooks/useEditWorkout";
+import { useEditStats } from "../../hooks/useEditStats";
 import { UserAuth } from "../../context/AuthContext";
 import './Stats.css'
 
@@ -11,7 +11,7 @@ const EditStats = () => {
             newMaxBench, setNewMaxBench,
             newMaxSquat, setNewMaxSquat,
             newMaxDeadlift, setNewMaxDeadlift,
-            editWorkout } = useEditWorkout(session);
+            editStats } = useEditStats(session);
     const [loading, setLoading] = useState(false);
 
     const goBack = () => {
@@ -20,7 +20,7 @@ const EditStats = () => {
 
     const handleEditStat = async (e) => {
         e.preventDefault();
-        const result = await editWorkout(session);
+        const result = await editStats(session);
         if (result.success) {
             navigate('/stats');
         }
@@ -29,32 +29,38 @@ const EditStats = () => {
     return (
         <div className="pageContainer">
             <div className="contentContainer">
-                    <p>EDIT STATS</p>
+                    <h2>EDIT STATS</h2>
                     <form onSubmit={handleEditStat} className="section">
-                        <input 
-                            type="number"
-                            placeholder="Enter New Weight"
-                            value={newWeight}
-                            onChange={(e) => setNewWeight(e.target.value)}
-                        />
-                        <input 
-                            type="number"
-                            placeholder="Enter New Max Bench"
-                            value={newMaxBench}
-                            onChange={(e) => setNewMaxBench(e.target.value)}
-                        />
-                        <input 
-                            type="number"
-                            placeholder="Enter New Max Squat"
-                            value={newMaxSquat}
-                            onChange={(e) => setNewMaxSquat(e.target.value)}
-                        />
-                        <input 
-                            type="number"
-                            placeholder="Enter New Max Deadlift"
-                            value={newMaxDeadlift}
-                            onChange={(e) => setNewMaxDeadlift(e.target.value)}
-                        />
+                        <div className="editInput">
+                            <input 
+                                type="number"
+                                placeholder="Enter New Weight"
+                                className="editText"
+                                value={newWeight}
+                                onChange={(e) => setNewWeight(e.target.value)}
+                            />
+                            <input 
+                                type="number"
+                                placeholder="Enter New Max Bench"
+                                className="editText"
+                                value={newMaxBench}
+                                onChange={(e) => setNewMaxBench(e.target.value)}
+                            />
+                            <input 
+                                type="number"
+                                placeholder="Enter New Max Squat"
+                                className="editText"
+                                value={newMaxSquat}
+                                onChange={(e) => setNewMaxSquat(e.target.value)}
+                            />
+                            <input 
+                                type="number"
+                                placeholder="Enter New Max Deadlift"
+                                className="editText"
+                                value={newMaxDeadlift}
+                                onChange={(e) => setNewMaxDeadlift(e.target.value)}
+                            />
+                        </div>
                         <div className="buttons">
                             <button type="submit" disabled={loading}>Submit</button>
                             <button type="button" onClick={goBack}>Cancel</button>
