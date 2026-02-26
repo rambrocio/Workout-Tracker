@@ -33,8 +33,8 @@ export async function updateUserProfile(userId, weight, maxBench, maxSquat, maxD
         .single();
 
         if (error) {
-            console.error("Error updating Profile");
-            throw errow;
+            console.error("Error Updating Profile");
+            return error;
         }
         
         return {success: true, data};

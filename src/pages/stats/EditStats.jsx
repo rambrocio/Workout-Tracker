@@ -11,6 +11,7 @@ const EditStats = () => {
             newMaxBench, setNewMaxBench,
             newMaxSquat, setNewMaxSquat,
             newMaxDeadlift, setNewMaxDeadlift,
+            error,
             editStats } = useEditStats(session);
     const [loading, setLoading] = useState(false);
 
@@ -29,7 +30,7 @@ const EditStats = () => {
     return (
         <div className="pageContainer">
             <div className="contentContainer">
-                    <h2>EDIT STATS</h2>
+                    <h2>Edit Your Stats</h2>
                     <form onSubmit={handleEditStat} className="section">
                         <div className="editInput">
                             <input 
@@ -38,6 +39,7 @@ const EditStats = () => {
                                 className="editText"
                                 value={newWeight}
                                 onChange={(e) => setNewWeight(e.target.value)}
+                                required
                             />
                             <input 
                                 type="number"
@@ -45,6 +47,7 @@ const EditStats = () => {
                                 className="editText"
                                 value={newMaxBench}
                                 onChange={(e) => setNewMaxBench(e.target.value)}
+                                required
                             />
                             <input 
                                 type="number"
@@ -52,6 +55,7 @@ const EditStats = () => {
                                 className="editText"
                                 value={newMaxSquat}
                                 onChange={(e) => setNewMaxSquat(e.target.value)}
+                                required
                             />
                             <input 
                                 type="number"
@@ -59,12 +63,14 @@ const EditStats = () => {
                                 className="editText"
                                 value={newMaxDeadlift}
                                 onChange={(e) => setNewMaxDeadlift(e.target.value)}
+                                required
                             />
                         </div>
                         <div className="buttons">
                             <button type="submit" disabled={loading}>Submit</button>
                             <button type="button" onClick={goBack}>Cancel</button>
                         </div>
+                        {error && <p className="errorMessage">{error}</p>} <br />
                     </form>
             </div>
         </div>

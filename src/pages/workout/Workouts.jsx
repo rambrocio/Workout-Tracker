@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
-import { getWorkout } from "../../services/workoutServices";
 import { formatDate } from "../../services/dateServices";
 import { useWorkoutLoader } from "../../hooks/useWorkoutLoader";
 import Heading from "../../components/heading";
@@ -9,10 +8,7 @@ import './Workouts.css'
 const Workouts = () => {
     const { session } = UserAuth();
     const [inputDate, setInputDate] = useState("");
-    const { workouts, setWorkouts, 
-            searchDate, setSearchDate,
-            error,
-            loadWorkout } = useWorkoutLoader(session, inputDate);
+    const { workouts, searchDate, error, loadWorkout } = useWorkoutLoader(session, inputDate);
     const [loading, setLoading] = useState(false);
     
     const bodyPartsHit = [... new Set(workouts.map(bodyPart => bodyPart.muscle_group))];

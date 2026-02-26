@@ -11,6 +11,22 @@ export const useEditStats = (session) => {
 
     const editStats = async () => {
         setError("");
+        if (newWeight < 1) {
+            setError("New Weight cannot be less than 1 lb");
+            return;
+        }
+        if (newMaxBench < 0) {
+            setError("New Max Bench cannot be less than 0 lbs");
+            return;
+        }
+        if (newMaxSquat < 0) {
+            setError("New Max Squat cannot be less than 0 lbs");
+            return;
+        }
+        if (newMaxDeadlift < 0) {
+            setError("New Max Deadlift cannot be less than 0 lbs");
+            return;
+        }
         setLoading(true);
         try {
             const userId = session?.user?.id;
@@ -40,6 +56,7 @@ export const useEditStats = (session) => {
             newMaxBench, setNewMaxBench,
             newMaxSquat, setNewMaxSquat,
             newMaxDeadlift, setNewMaxDeadlift,
+            error,
             editStats
     };
 };
