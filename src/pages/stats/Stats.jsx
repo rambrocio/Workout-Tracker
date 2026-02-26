@@ -1,16 +1,13 @@
 import { UserAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import { useUserLoader } from "../../hooks/useUserLoader";
 import { useStatsLoader } from "../../hooks/useStatsLoader";
 import Heading from "../../components/heading";
 import './Stats.css';
 
-
 const Stats = () => {
     const { session } = UserAuth();
     const { userData } = useUserLoader(session);
     const { daysWorkedOut, totalSets, totalReps, totalWeight} = useStatsLoader(session);
-
 
     return (
         <div>

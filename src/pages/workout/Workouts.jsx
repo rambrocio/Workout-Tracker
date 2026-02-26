@@ -2,33 +2,24 @@ import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { getWorkout } from "../../services/workoutServices";
 import { formatDate } from "../../services/dateServices";
+import { useWorkoutLoader } from "../../hooks/useWorkoutLoader";
 import Heading from "../../components/heading";
 import './Workouts.css'
 
 const Workouts = () => {
     const { session } = UserAuth();
     const [inputDate, setInputDate] = useState("");
-    const [searchDate, setSearchDate] = useState("");
-    const [workouts, setWorkouts] = useState([]);
+    const { workouts, setWorkouts, 
+            searchDate, setSearchDate,
+            loadWorkout } = useWorkoutLoader(session, inputDate);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     
     const bodyPartsHit = [... new Set(workouts.map(bodyPart => bodyPart.muscle_group))];
 
     const handleGetWorkout = async(e) => {
-        e.preventDefault()
-        setLoading(true)
-        setError("")
-        try {
-            const workout = await getWorkout(session.user.id, inputDate);
-            setWorkouts(workout);
-            setSearchDate(inputDate);
-
-        } catch (error) {
-            setError("Error occured retrieving workout")
-        } finally {
-            setLoading(false);
-        }
+        e.preventDefault();
+        await loadWorkout();
     }
 
     return (
